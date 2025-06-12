@@ -1,0 +1,38 @@
+package com.kunal.migration_mongodb_documentdb.model;
+
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+import org.springframework.data.annotation.Id;
+import org.springframework.data.mongodb.core.index.Indexed;
+import org.springframework.data.mongodb.core.mapping.Document;
+
+import java.time.Instant;
+import java.time.ZonedDateTime;
+
+@Document(collection = "employee")
+@Data
+@AllArgsConstructor
+@NoArgsConstructor
+public class Employee {
+
+    @Id
+    private Long id;
+
+    private String name;
+
+    @Indexed(unique = true)
+    private String email;
+
+    private String password;
+
+    @Indexed
+    private String role;
+
+    @Indexed
+    private Instant lastLogin;
+
+    private Preferences preferences;
+
+
+}
